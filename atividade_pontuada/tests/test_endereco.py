@@ -22,6 +22,7 @@ def test_atributo_cep_valido(endereco_valido):
 def test_atributo_cidade_valida(endereco_valido):
     assert endereco_valido.cidade == "Salvador"
 
+#Teste mensagem vazia
 def test_lagradouro_endereco_vazio_mensagem_erro(endereco_valido):
     with pytest.raises(ValueError, match= "O lagradouro não pode ser vazio, você precisa informar o lagradouro!"):
         Endereço ("", "900", "Casa", "40711-000", "Salvador", UnidadeFederativa.BAHIA.texto)  
@@ -33,3 +34,11 @@ def test_numero_endereco_vazio_mensagem_erro(endereco_valido):
 def test_complemento_endereco_vazio_mensagem_erro(endereco_valido):
     with pytest.raises(ValueError, match= "O complemento não pode ser vazio, você precisa informar o complemento!"):
         Endereço ("Terezinha", "900", "", "40711-000", "Salvador", UnidadeFederativa.BAHIA.texto)  
+
+def test_cep_endereco_vazio_mensagem_erro(endereco_valido):
+    with pytest.raises(ValueError, match= "O cep não pode ser vazio, você precisa informar o cep!"):
+        Endereço ("Terezinha", "900", "Casa", "", "Salvador", UnidadeFederativa.BAHIA.texto)  
+
+def test_cidade_endereco_vazio_mensagem_erro(endereco_valido):
+    with pytest.raises(ValueError, match= "O nome da cidade não pode ser vazio, você precisa informar o cidade!"):
+        Endereço ("Terezinha", "900", "Casa", "40711-000", "", UnidadeFederativa.BAHIA.texto)  
