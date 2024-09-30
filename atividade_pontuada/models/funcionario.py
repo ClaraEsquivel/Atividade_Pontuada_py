@@ -36,24 +36,24 @@ class Funcionario(Pessoa_Fisica):
             raise TypeError("Valor inválido")
         return cpf 
     
-    # def __verificar_rg_funcionario(self, rg):
-    #     if rg == "":
-    #         raise ValueError("O rg não pode ser vazio, você precisa informar o rg!")
-    #     if not isinstance(rg, str):
-    #         raise TypeError("Valor inválido")
-    #     return rg
+   
+    def __verificar_rg_funcionario(self, rg):
+        if rg == "":
+            raise ValueError("O rg não pode ser vazio, você precisa informar o rg!")
+        if not isinstance(rg, str):
+            raise TypeError("Valor inválido")
+        return rg
+
+    def __verificar_matricula_funcionario(self, matricula):
+        if matricula == "":
+            raise ValueError("A matrícula não pode ser vazio, você precisa informar a matrícula!")
+        if not isinstance(matricula, str):
+            raise TypeError("Valor inválido")
+        return matricula
     
-    # def __verificar_matricula_funcionario(self, matricula):
-    #     if matricula == "":
-    #         raise ValueError("A matricula não pode ser vazia, você precisa informar a matrícula!")
-    #     if not isinstance(matricula, str):
-    #         raise TypeError("Valor inválido")
-    #     return matricula
-    
-    # def __verificar_salario_funcionario(self, salario):
-    #     if salario < 0:
-    #         raise ValueError("O salário não pode ser negativo, informe um salário positivo")
-    #     if not isinstance(salario, float):
-    #        raise TypeError("Valor incorreto")
-    #     return salario
-    
+    def __verificar_salario_funcionario(self, salario):
+        if salario < 0:
+            raise ValueError("O salário não pode ser negativo, informe um salário positivo")
+        if not isinstance(salario, float):
+            raise TypeError("Valor inválido")
+        return salario

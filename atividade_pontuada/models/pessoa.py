@@ -24,6 +24,7 @@ class Pessoa():
            raise TypeError("Valor inválido")
         return id
 
+            
     def __verificar_nome_pessoa(self, nome):
         if nome == "":
             raise ValueError("O nome não pode ser vazio, você precisa informar o nome!")

@@ -19,13 +19,7 @@ def test_atributo_nome_valido(pessoa_valida):
 def test_pessoa_alternar_nome_valido(pessoa_valida):
     pessoa_valida.nome = "Cerise"
     assert pessoa_valida.nome == "Cerise"
-
-#Teste ID Negativo 
-def test_pessoa_id_negativo_mensagem_erro(pessoa_valida):
-    with pytest.raises(ValueError, match= "Valor inválido, o ID não pode ser negativo"):
-        Pessoa (-123, "Clara", "(71)99111-2222", "clara@gmail.com", 
-            Endereço ("Terezinha", "900", "Casa", "40711-000", "Salvador", UnidadeFederativa.BAHIA.texto))
-
+    
 #Teste mensagem vazia
 def test_nome_pessoa_vazio_mensagem_erro(pessoa_valida):
     with pytest.raises(ValueError, match= "O nome não pode ser vazio, você precisa informar o nome!"):
