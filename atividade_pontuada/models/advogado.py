@@ -5,98 +5,65 @@ from atividade_pontuada.models.enums.Setor import Setor
 from atividade_pontuada.models.enums.Sexo import Sexo
 
 class Advogado(Funcionario):
-    def __init__(self, id: int, nome: str, telefone:str, email:str, endereco:Endereço,
-                sexo:Sexo, estadoCivil:EstadoCivil, dataNascimento:str,
-                cpf:str, rg:str, matricula:str, setor:Setor, salario:float, oab:str) -> None:
+    def __init__(self, id: int, nome: str, telefone: str, email: str, sexo: Sexo, 
+                 estadoCivil: EstadoCivil, dataNascimento: str, cpf: str, rg: str, 
+                 matricula: str, setor: Setor, salario: float, oab: str, endereco: Endereço) -> None:
         
-         super().__init__(self._verificar_id_advogado(id), self._verificar_nome_advogado(nome), self._verificar_cpf_advogado(cpf),
-                          self._verificar_rg_advogado(rg), self._verificar_matricula_advogado(matricula), self._verificar_telefone_advogado(telefone),
-                          self._verificar_email_advogado(email), self._verificar_data_nascimento_advogado(dataNascimento), setor, 
-                          self._verificar_salario_advogado(salario), estadoCivil, sexo, endereco)
-         self.oab = self.__verificar_oab_advogado(oab)
-        
+        super().__init__(self._verificar_id_advogado(id), self._verificar_nome_advogado(nome), 
+                         self._verificar_telefone_advogado(telefone), self._verificar_email_advogado(email), 
+                         self._verificar_sexo_advogado(sexo), self._verificar_estado_civil_advogado(estadoCivil), 
+                         self._verificar_data_nascimenro_advogado(dataNascimento),self._verificar_cpf_advogado(cpf), 
+                         self._verificar_rg_advogado(rg), self._verificar_matricula_advogado(matricula), 
+                         self._verificar_setor_advogado(setor), self._verificar_salario_advogado(salario),
+                         self._verficar_oab_advogado(oab), self._verificar_endereco_advogado(endereco))
+
+#Verificar ID
     def _verificar_id_advogado(self, id):
 
         self._verificar_id_tipo_invalido(id)
-        self._verificar_id_negativa(id)
+        self._verificar_id_negativo(id)
 
         self.id = id
         return self.id
-    
-    def _verificar_salario_advogado(self, salario):
 
-        self._verificar_salario_tipo_invalido(salario)
-        self._verificar_salario_negativo(salario)
+#Verificar salário   
+    # def _verificar_salario_advogado(self, salario):
 
-        self.salario = salario
-        return self.salario
-    
-    def _verificar_nome_advogado(self, nome):
+    #     self._verificar_salario_tipo_invalido(salario)
+    #     self._verificar_salario_negativo(salario)
 
-        self._verificar_nome_vazio_invalido(nome)
+    #     self.salario = salario
+    #     return self.salario
 
-        self.nome = nome
-        return self.nome
-
-
+#def de ID
     def _verificar_id_tipo_invalido(self, id):
         if not isinstance(id, int):
-            raise TypeError("O id deve ser um número inteiro.")
+            raise ValueError("O ID é um número inteiro!")
+        return id
 
-    def _verificar_id_negativa(self, id):
-        if id <= 0:
-            raise ValueError("O id não pode ser negativo.")
-        
-    def _verificar_nome_vazio_invalido(self, nome):
-        if nome == "":
-            raise TypeError("O nome não deve estar vazio.")
-        return nome
-    
-    def _verificar_cpf_advogado(self, cpf):
-        if cpf == "":
-            raise TypeError("O CPF não deve estar vazio.")
-        return cpf
-    
-    def _verificar_rg_advogado(self, rg):
-        if rg == "":
-            raise TypeError("O rg não deve estar vazio.")
-        return rg
-    
-    def _verificar_matricula_advogado(self, matricula):
-        if matricula == "":
-            raise TypeError("A matricula não deve estar vazia.")
-        return matricula
-    
-    def _verificar_telefone_advogado(self, telefone):
-        if telefone == "":
-            raise TypeError("O telefone não deve estar vazio.")
-        return telefone
-    
-    def _verificar_email_advogado(self, email):
-        if email == "":
-            raise TypeError("O e-mail não deve estar vazio.")
-        return email
-    
-    def _verificar_data_nascimento_advogado(self, dataNascimento):
-        if dataNascimento == "":
-            raise TypeError("A data de nascimento não deve estar vazia.")
-        return dataNascimento
-    
-    def _verificar_salario_tipo_invalido(self, salario):
-        if not isinstance(salario, float):
-            raise TypeError("O salário deve ser um número real.")
-        
-    def _verificar_salario_negativo(self, salario):
-        if salario <= 0:
-            raise ValueError("O salário não deve ser negativo.")
-    
-    def __verificar_oab_advogado(self, oab):
-        if oab == "":
-            raise ValueError("O que está sendo solicitado está vazio.")
-        if not isinstance(oab, str):
-            raise TypeError("valor inválido.")
-        return oab
-    
+    def _verificar_id_negativo(self,id):
+        if id < 0:
+            raise ValueError("O ID não pode ser negativo")
+        if not isinstance(id, int):
+           raise TypeError("Valor inválido")
+        return id
+
+#def de salario
+    # def _verificar_salario_tipo_invalido(self, salario):
+    #     if not isinstance(salario, float):
+    #         raise ValueError("O salário é um número real!")
+    #     return salario
+
+    # def _verificar_salario_negativo(self, salario):
+    #     if salario < 0:
+    #         raise ValueError("O salário não pode ser negativo")
+    #     if not isinstance(salario, float):
+    #        raise TypeError("Valor inválido")
+    #     return salario
+
+
+
+
     def __str__(self) -> str:
         return(
             f"{super().__str__()}"
