@@ -24,13 +24,13 @@ class Engenheiro(Funcionario):
         self.id = id
         return self.id
     
-    # def _verificar_salario_engenheiro(self, salario):
+    def _verificar_salario_engenheiro(self, salario):
 
-    #     self._verificar_salario_tipo_invalido(salario)
-    #     self._verificar_salario_negativo(salario)
+        self._verificar_salario_tipo_invalido(salario)
+        self._verificar_salario_negativo(salario)
 
-    #     self.salario = salario
-    #     return self.salario
+        self.salario = salario
+        return self.salario
     
     def _verificar_nome_engenheiro(self, nome):
 

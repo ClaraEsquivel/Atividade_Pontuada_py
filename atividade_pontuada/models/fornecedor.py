@@ -5,7 +5,7 @@ class Fornecedor(Pessoa_Juridica):
     def __init__(self, id:int, nome:str, telefone:str, email:str, endereco:Endereço, 
                  cnpj: str, inscricaoEstadual: str, produto:str) -> None:
         super().__init__(self._verificar_id(id), self._verificar_nome(nome), self._verificar_telefone(telefone), self._verificar_email(email), 
-                         endereco, self._verificar_cnpj(cnpj), self._verificar_inscricao_estadual(inscricao_estadual))
+                         endereco, self._verificar_cnpj(cnpj), self._verificar_inscricao_estadual(inscricaoEstadual))
         
         self.produto = self._verificar_produto_fornecedor(produto)
 

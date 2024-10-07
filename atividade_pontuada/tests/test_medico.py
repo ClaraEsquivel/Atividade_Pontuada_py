@@ -44,29 +44,29 @@ def test_medico_setor_valido(medico_valido):
 def test_medico_salario_valido(medico_valido):
     assert medico_valido.salario == 6000
 
-def test_medico_EstadoCivil_valido(medico_valido):
-    assert medico_valido.EstadoCivil == EstadoCivil.DIVORCIADO
+def test_medico_estado_civil_valido(medico_valido):
+    assert medico_valido.estado_civil == EstadoCivil.DIVORCIADO
 
 def test_medico_sexo_valido(medico_valido):
     assert medico_valido.sexo == Sexo.FEMININO
 
 def test_endereco_medico_logradouro_valido(medico_valido):
-    assert medico_valido.endereco.logradouro == "Rua Vasco da Gama"
+    assert medico_valido.endereço.logradouro == "Rua Vasco da Gama"
 
 def test_endereco_medico_numero_valido(medico_valido):
-    assert medico_valido.endereco.numero == "478"
+    assert medico_valido.endereço.numero == "478"
 
 def test_endereco_medico_complemento_valido(medico_valido):
-    assert medico_valido.endereco.complemento == "N/D"
+    assert medico_valido.endereço.complemento == "N/D"
 
 def test_endereco_medico_cep_valido(medico_valido):
-    assert medico_valido.endereco.cep == "123.456.789"
+    assert medico_valido.endereço.cep == "123.456.789"
 
 def test_endereco_medico_cidade_valido(medico_valido):
-    assert medico_valido.endereco.cidade == "Rio de Janeiro"
+    assert medico_valido.endereço.cidade == "Rio de Janeiro"
 
 def test_endereco_medico_uf_valido(medico_valido):
-    assert medico_valido.endereco.uf == UnidadeFederativa.RIO_DE_JANEIRO
+    assert medico_valido.endereço.uf == UnidadeFederativa.RIO_DE_JANEIRO
 
 def test_medico_crm_valida(medico_valido):
     assert medico_valido.crm == "147852"
@@ -143,5 +143,3 @@ def test_medico_salario_negativo_retorna_mensagem_erro():
         Medico(455, "Carla", "888.777.666.55", "111.222-33", "010.123456", "(71)90000-1111", "medicarla@gmail.com",
                     "14/03/1965", Setor.SAUDE, -6000.0, EstadoCivil.DIVORCIADO, Sexo.FEMININO, 
                     Endereço("Rua Vasco da Gama", "478", "N/D", "123.456.789", "Rio de Janeiro", UnidadeFederativa.RIO_DE_JANEIRO), "147852")
-
-

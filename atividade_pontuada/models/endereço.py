@@ -1,8 +1,8 @@
 from atividade_pontuada.models.enums.UnidadeFederativa import UnidadeFederativa
 
 class Endereço:
-    def __init__(self, lagradouro:str, numero:str, complemento:str, cep:str, cidade:str, uf:UnidadeFederativa) -> None:
-        self.lagradouro = self.__verificar_lagradouro_endereco(lagradouro)
+    def __init__(self, logradouro:str, numero:str, complemento:str, cep:str, cidade:str, uf:UnidadeFederativa) -> None:
+        self.lagradouro = self.__verificar_logradouro_endereco(logradouro)
         self.numero = self.__verificar_numero_endereco(numero)
         self.complemento = self.__verificar_complemento_endereco(complemento)
         self.cep = self.__verificar_cep_endereco(cep)
@@ -12,7 +12,7 @@ class Endereço:
 
     def __str__(self) -> str:
         return (
-            f"\nLagradouro: {self.lagradouro}"
+            f"\nLagradouro: {self.logradouro}"
             f"\nNúmero: {self.numero}"
             f"\nComplemento: {self.complemento}"
             f"\nCEP: {self.cep}"
@@ -20,12 +20,12 @@ class Endereço:
             f"\nUF: {self.uf.texto}"
         )    
 
-    def __verificar_lagradouro_endereco(self, lagradouro):
-        if lagradouro == "":
-            raise ValueError("O lagradouro não pode ser vazio, você precisa informar o lagradouro!")
-        if not isinstance(lagradouro, str):
+    def __verificar_logradouro_endereco(self, logradouro):
+        if logradouro == "":
+            raise ValueError("O logradouro não pode ser vazio, você precisa informar o logradouro!")
+        if not isinstance(logradouro, str):
             raise TypeError("Valor inválido")
-        return lagradouro 
+        return logradouro 
     
     def __verificar_numero_endereco(self, numero):
         if numero == "":

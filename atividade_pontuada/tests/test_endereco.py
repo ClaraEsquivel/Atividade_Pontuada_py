@@ -8,7 +8,7 @@ def endereco_valido():
     return endereco
      
 def test_atributo_logradouro_valido(endereco_valido):
-    assert endereco_valido.lagradouro == "Terezinha"
+    assert endereco_valido.logradouro == "Terezinha"
 
 def test_atributo_numero_valido(endereco_valido):
     assert endereco_valido.numero == "900"
@@ -23,8 +23,8 @@ def test_atributo_cidade_valida(endereco_valido):
     assert endereco_valido.cidade == "Salvador"
 
 #Teste mensagem vazia
-def test_lagradouro_endereco_vazio_mensagem_erro(endereco_valido):
-    with pytest.raises(ValueError, match= "O lagradouro não pode ser vazio, você precisa informar o lagradouro!"):
+def test_logradouro_endereco_vazio_mensagem_erro(endereco_valido):
+    with pytest.raises(ValueError, match= "O logradouro não pode ser vazio, você precisa informar o logradouro!"):
         Endereço ("", "900", "Casa", "40711-000", "Salvador", UnidadeFederativa.BAHIA.texto)  
 
 def test_numero_endereco_vazio_mensagem_erro(endereco_valido):

@@ -11,11 +11,11 @@ class Funcionario(Pessoa_Fisica):
                  matricula:str, setor:Setor, salario:float) -> None:
         
         super().__init__(id, nome, telefone, email, endereco, sexo, estadoCivil, dataNascimento)
-        self.cpf = self.__verificar_cpf_funcionario(cpf)
-        self.rg = self.__verificar_rg_funcionario(rg)
-        self.matricula = self.__verificar_matricula_funcionario(matricula)
+        self.cpf = cpf
+        self.rg = rg
+        self.matricula = matricula
         self.setor = setor
-        self.salario = self.__verificar_salario_funcionario(salario)
+        self.salario = salario
 
     def __str__(self) -> str:
         return (
@@ -25,35 +25,4 @@ class Funcionario(Pessoa_Fisica):
             f"\nMatrícula: {self.matricula}"
             f"\nSetor: {self.setor.texto}"
             f"\nSalário: {self.salario}"
-            
-        )
-    
-
-    def __verificar_cpf_funcionario(self, cpf):
-        if cpf == "":
-            raise ValueError("O cpf não pode ser vazio, você precisa informar o cpf!")
-        if not isinstance(cpf, str):
-            raise TypeError("Valor inválido")
-        return cpf 
-    
-   
-    def __verificar_rg_funcionario(self, rg):
-        if rg == "":
-            raise ValueError("O rg não pode ser vazio, você precisa informar o rg!")
-        if not isinstance(rg, str):
-            raise TypeError("Valor inválido")
-        return rg
-
-    def __verificar_matricula_funcionario(self, matricula):
-        if matricula == "":
-            raise ValueError("A matrícula não pode ser vazio, você precisa informar a matrícula!")
-        if not isinstance(matricula, str):
-            raise TypeError("Valor inválido")
-        return matricula
-    
-    def __verificar_salario_funcionario(self, salario):
-        if salario < 0:
-            raise ValueError("O salário não pode ser negativo, informe um salário positivo")
-        if not isinstance(salario, float):
-            raise TypeError("Valor inválido")
-        return salario
+              )
