@@ -5,14 +5,14 @@ from atividade_pontuada.models.enums.Setor import Setor
 from atividade_pontuada.models.enums.Sexo import Sexo
 
 class Engenheiro(Funcionario):
-    def __init__(self, id:int, nome: str, telefone:str, email:str, endereco:Endereço,
+    def __init__(self, id:int, nome: str, telefone:str, email:str, endereço:Endereço,
                 sexo:Sexo, estadoCivil:EstadoCivil, dataNascimento:str,
                 cpf:str, rg:str, matricula:str, setor:Setor, salario:float, crea:str) -> None:
-        super().__init__(self._verificar_id_engenheiro(id), self._verificar_nome_engenheiro(nome), self._verificar_cpf_engenheiro(cpf),
-                          self._verificar_rg_engenheiro(rg), self._verificar_matricula_engenheiro(matricula), self._verificar_telefone_engenheiro(telefone),
-                          self._verificar_email_engenheiro(email), self._verificar_data_nascimento_engenheiro(dataNascimento), setor, 
-                          self._verificar_salario_engenheiro(salario),
-                            estadoCivil, sexo, endereco)
+        super().__init__(id=self._verificar_id_engenheiro(id), nome=self._verificar_nome_engenheiro(nome), cpf=self._verificar_cpf_engenheiro(cpf),
+                          rg=self._verificar_rg_engenheiro(rg), matricula=self._verificar_matricula_engenheiro(matricula), telefone=self._verificar_telefone_engenheiro(telefone),
+                          email=self._verificar_email_engenheiro(email), dataNascimento=self._verificar_data_nascimento_engenheiro(dataNascimento), setor=setor, 
+                          salario=self._verificar_salario_engenheiro(salario),
+                            estadoCivil=estadoCivil, sexo=sexo, endereço=endereço)
 
         self.crea = self.__verificar_crea_engenheiro(crea)
 
@@ -83,6 +83,15 @@ class Engenheiro(Funcionario):
             raise TypeError("A data de nascimento não deve estar vazia.")
         return dataNascimento
     
+    def __verificar_crea_engenheiro(self, crea):
+        if not isinstance(crea, str):
+            raise TypeError("valor inválido.")
+        
+        if crea.strip():
+            raise ValueError("O CREA não deve ser vazio.")
+        
+        return crea
+    
     def _verificar_salario_tipo_invalido(self, salario):
         if not isinstance(salario, float):
             raise TypeError("O salário deve ser um número real.")
@@ -91,12 +100,6 @@ class Engenheiro(Funcionario):
         if salario <= 0:
             raise ValueError("O salário não deve ser negativo.")
 
-    def __verificar_crea_engenheiro(self, crea):
-        if crea == "":
-            raise ValueError("O CREA não deve ser vazio.")
-        if not isinstance(crea, str):
-            raise TypeError("valor inválido.")
-        return crea
 
     def __str__(self) -> str:
         return(

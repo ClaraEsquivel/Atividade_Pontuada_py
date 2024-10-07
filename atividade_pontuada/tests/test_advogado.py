@@ -9,10 +9,10 @@ from atividade_pontuada.models.enums.Sexo import Sexo
 
 @pytest.fixture
 def advogado_valido():
-    advogado = Advogado(123, "Elton", "(75)98888-8888", "elton@gmail.com", 
-                        Endereço("Artêmia", "155", "Casa", "40700.000", "Feira de Santana", UnidadeFederativa.BAHIA.texto), 
-                        Sexo.MASCULINO.texto, EstadoCivil.CASADO.texto, "15/12/1985", "089.000.000-88", 
-                        "20.000.000-20", "1111",Setor.JURIDICO.texto, 5000.0, "40711")
+    advogado = Advogado(id=123, nome="Elton", telefone="(75)98888-8888", email="elton@gmail.com", 
+                        endereço=Endereço(logradouro="Artêmia", numero="155", complemento="Casa", cep="40700.000", cidade="Feira de Santana", uf=UnidadeFederativa.BAHIA.texto), 
+                        sexo=Sexo.MASCULINO.texto, estadoCivil=EstadoCivil.CASADO.texto, dataNascimento="15/12/1985", cpf="089.000.000-88", 
+                        rg="20.000.000-20", matricula="1111", setor=Setor.JURIDICO.texto, salario=5000.0, oab="40711")
     return advogado
 
 def test_advogado_id_valido(advogado_valido):
@@ -46,28 +46,28 @@ def test_advogado_salario_valido(advogado_valido):
     assert advogado_valido.salario == 5000.0
 
 def test_advogado_estado_civil_valido(advogado_valido):
-    assert advogado_valido.estado_civil == EstadoCivil.CASADO.texto
+    assert advogado_valido.estadocivil == EstadoCivil.CASADO.texto
 
 def test_advogado_sexo_valido(advogado_valido):
-    assert advogado_valido.sexo == Sexo.MASCULINO
+    assert advogado_valido.sexo == Sexo.MASCULINO.texto
 
-def test_endereco_advogado_logradouro_valido(advogado_valido):
-    assert advogado_valido.endereco.logradouro == "Artêmia"
+def test_endereço_advogado_logradouro_valido(advogado_valido):
+    assert advogado_valido.endereço.logradouro == "Artêmia"
 
-def test_endereco_advogado_numero_valido(advogado_valido):
-    assert advogado_valido.endereco.numero == "155"
+def test_endereço_advogado_numero_valido(advogado_valido):
+    assert advogado_valido.endereço.numero == "155"
 
-def test_endereco_advogado_complemento_valido(advogado_valido):
-    assert advogado_valido.endereco.complemento == "Casa"
+def test_endereço_advogado_complemento_valido(advogado_valido):
+    assert advogado_valido.endereço.complemento == "Casa"
 
-def test_endereco_advogado_cep_valido(advogado_valido):
-    assert advogado_valido.endereco.cep == "40700.000"
+def test_endereço_advogado_cep_valido(advogado_valido):
+    assert advogado_valido.endereço.cep == "40700.000"
 
-def test_endereco_advogado_cidade_valido(advogado_valido):
-    assert advogado_valido.endereco.cidade == "Feira de Santana"
+def test_endereço_advogado_cidade_valido(advogado_valido):
+    assert advogado_valido.endereço.cidade == "Feira de Santana"
 
-def test_endereco_advogado_uf_valido(advogado_valido):
-    assert advogado_valido.endereco.uf == UnidadeFederativa.BAHIA.texto
+def test_endereço_advogado_uf_valido(advogado_valido):
+    assert advogado_valido.endereço.uf == UnidadeFederativa.BAHIA.texto
 
 def test_advogadoa_OAB_valida(advogado_valido):
     assert advogado_valido.oab == "40711"
@@ -81,7 +81,7 @@ def test_advogado_oab_vazio_retorna_mensagem_excecao():
                         5000.0, "")
 
 def test_advogado_id_negativa_retorna_mensagem_erro():
-    with pytest.raises(ValueError, match="O que está sendo solicitado está vazio."):
+    with pytest.raises(ValueError, match="O id não pode ser negativo."):
         Advogado(-123, "Elton", "(75) 98888-8888", "elton@gmail.com", 
                         Endereço("Artêmia", "155", "Casa", "40700.000", "Feira de Santana", 
                         UnidadeFederativa.BAHIA.texto), Sexo.MASCULINO.texto, EstadoCivil.CASADO.texto, 

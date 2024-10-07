@@ -5,13 +5,13 @@ from atividade_pontuada.models.enums.Setor import Setor
 from atividade_pontuada.models.enums.Sexo import Sexo
 
 class Medico(Funcionario):
-    def __init__(self, id:int, nome: str, telefone:str, email:str, endereco:Endereço,
+    def __init__(self, id:int, nome: str, telefone:str, email:str, endereço:Endereço,
                 sexo:Sexo, estadoCivil:EstadoCivil, dataNascimento:str,
                 cpf:str, rg:str, matricula:str, setor:Setor, salario:float, crm:str) -> None:
-        super().__init__(self._verificar_id_medico(id), self._verificar_nome_medico(nome), self._verificar_cpf_medico(cpf),
-                          self._verificar_rg_medico(rg), self._verificar_matricula_medico(matricula), self._verificar_telefone_medico(telefone),
-                          self._verificar_email_medico(email), self._verificar_data_nascimento_medico(dataNascimento), setor, 
-                          self._verificar_salario_medico(salario), estadoCivil, sexo, endereco)
+        super().__init__(id=self._verificar_id_medico(id), nome=self._verificar_nome_medico(nome), cpf=self._verificar_cpf_medico(cpf),
+                          rg=self._verificar_rg_medico(rg), matricula=self._verificar_matricula_medico(matricula), telefone=self._verificar_telefone_medico(telefone),
+                          email=self._verificar_email_medico(email), dataNascimento=self._verificar_data_nascimento_medico(dataNascimento), setor=setor, 
+                          salario=self._verificar_salario_medico(salario), estadoCivil=estadoCivil, sexo=sexo, endereço=endereço)
 
         self.crm = self.__verificar_crm_medico(crm)
 

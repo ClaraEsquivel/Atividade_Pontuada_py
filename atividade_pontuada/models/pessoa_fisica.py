@@ -4,12 +4,12 @@ from atividade_pontuada.models.enums.EstadoCivil import EstadoCivil
 from atividade_pontuada.models.endereço import Endereço
 
 class Pessoa_Fisica(Pessoa):
-    def __init__(self, id:int, nome:str, telefone:str, email:str, endereco:Endereço, 
-                dataNascimento:str, sexo:Sexo, estadocivil: EstadoCivil) -> None:
-        super().__init__(id, nome, telefone, email, endereco)
+    def __init__(self, id:int, nome:str, telefone:str, email:str, endereço:Endereço, 
+                dataNascimento:str, sexo:Sexo, estadoCivil: EstadoCivil) -> None:
+        super().__init__(id=id, nome=nome, telefone=telefone, email=email, endereço=endereço)
         self.dataNascimento = dataNascimento
         self.sexo = sexo
-        self.estadocivil = estadocivil
+        self.estadocivil = estadoCivil
 
 
     def __str__(self) -> str:

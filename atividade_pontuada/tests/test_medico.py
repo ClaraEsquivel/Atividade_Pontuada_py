@@ -9,9 +9,9 @@ from atividade_pontuada.models.enums.UnidadeFederativa import UnidadeFederativa
 
 @pytest.fixture
 def medico_valido():
-    medico = Medico(455, "Carla", "888.777.666.55", "111.222-33", "010.123456", "(71)90000-1111", "medicarla@gmail.com",
-                    "14/03/1965", Setor.SAUDE, 6000.0, EstadoCivil.DIVORCIADO, Sexo.FEMININO, 
-                    Endereço("Rua Vasco da Gama", "478", "N/D", "123.456.789", "Rio de Janeiro", UnidadeFederativa.RIO_DE_JANEIRO), "147852")
+    medico = Medico(id=455, nome="Carla", cpf="888.777.666.55", rg="111.222-33", matricula="010.123456", telefone="(71)90000-1111", email="medicarla@gmail.com",
+                    dataNascimento="14/03/1965", setor=Setor.SAUDE.texto, salario=6000.0, estadoCivil=EstadoCivil.DIVORCIADO.texto, sexo=Sexo.FEMININO.texto, 
+                    endereço=Endereço(logradouro="Rua Vasco da Gama", numero="478", complemento="N/D", cep="123.456.789", cidade="Rio de Janeiro", uf=UnidadeFederativa.RIO_DE_JANEIRO.texto), crm="147852")
     return medico
 
 def test_medico_id_valido(medico_valido):
@@ -39,16 +39,16 @@ def test_medico_data_de_nascimento_valido(medico_valido):
     assert medico_valido.dataNascimento == "14/03/1965"
 
 def test_medico_setor_valido(medico_valido):
-    assert medico_valido.setor == Setor.SAUDE
+    assert medico_valido.setor == Setor.SAUDE.texto
 
 def test_medico_salario_valido(medico_valido):
     assert medico_valido.salario == 6000
 
 def test_medico_estado_civil_valido(medico_valido):
-    assert medico_valido.estado_civil == EstadoCivil.DIVORCIADO
+    assert medico_valido.estadocivil == EstadoCivil.DIVORCIADO.texto
 
 def test_medico_sexo_valido(medico_valido):
-    assert medico_valido.sexo == Sexo.FEMININO
+    assert medico_valido.sexo == Sexo.FEMININO.texto
 
 def test_endereco_medico_logradouro_valido(medico_valido):
     assert medico_valido.endereço.logradouro == "Rua Vasco da Gama"
@@ -66,7 +66,7 @@ def test_endereco_medico_cidade_valido(medico_valido):
     assert medico_valido.endereço.cidade == "Rio de Janeiro"
 
 def test_endereco_medico_uf_valido(medico_valido):
-    assert medico_valido.endereço.uf == UnidadeFederativa.RIO_DE_JANEIRO
+    assert medico_valido.endereço.uf == UnidadeFederativa.RIO_DE_JANEIRO.texto
 
 def test_medico_crm_valida(medico_valido):
     assert medico_valido.crm == "147852"

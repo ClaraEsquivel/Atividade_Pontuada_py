@@ -2,10 +2,11 @@ from atividade_pontuada.models.pessoa_juridica import Pessoa_Juridica
 from atividade_pontuada.models.endereço import Endereço
 
 class Prestacao_Servico(Pessoa_Juridica):
-    def __init__(self, id: int, nome:str, telefone:str, email:str, endereco:Endereço,
+    def __init__(self, id: int, nome:str, telefone:str, email:str, endereço:Endereço,
                  cnpj: str, inscricaoEstadual: str,contratoInicio:str, contratoFim:str) -> None:
-       super().__init__(self._verificar_id(id), self._verificar_nome(nome), self._verificar_telefone(telefone), self._verificar_email(email), 
-                          endereco, self._verificar_cnpj(cnpj), self._verificar_inscricao_estadual(inscricaoEstadual)),
+       super().__init__(id=self._verificar_id(id), nome=self._verificar_nome(nome), telefone=self._verificar_telefone(telefone), email=self._verificar_email(email), 
+                          endereço=endereço, cnpj=self._verificar_cnpj(cnpj), inscricaoEstadual=self._verificar_inscricao_estadual(inscricaoEstadual)),
+       
        self.contratoInicio = self.__verificar_contrato_inicio(contratoInicio)
        self.contratoFim = self.__verificar_contrato_fim(contratoFim)
 
@@ -62,14 +63,14 @@ class Prestacao_Servico(Pessoa_Juridica):
         if contratoInicio == "":
             raise ValueError("Contrato inicio está vazio.")
         if not isinstance(contratoInicio, str):
-            raise TypeError("valor inválido.")
+            raise TypeError("Valor inválido.")
         return contratoInicio
     
     def __verificar_contrato_fim(self, contratoFim):
         if contratoFim == "":
             raise ValueError("Contrato fim está vazio.")
         if not isinstance(contratoFim, str):
-            raise TypeError("valor inválido.")
+            raise TypeError("Valor inválido.")
         return contratoFim
 
     def __str__(self) -> str:

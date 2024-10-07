@@ -5,13 +5,13 @@ from atividade_pontuada.models.enums.Setor import Setor
 from atividade_pontuada.models.enums.Sexo import Sexo
 
 class Advogado(Funcionario):
-    def __init__(self, id: int, nome: str, telefone: str, email: str, endereco: Endereço,
+    def __init__(self, id: int, nome: str, telefone: str, email: str, endereço: Endereço,
                   sexo: Sexo, estadoCivil: EstadoCivil, dataNascimento: str, cpf: str, 
                   rg: str, matricula: str, setor: Setor, salario: float, oab: str) -> None:
-        super().__init__(self._verificar_id_advogado(id), self._verificar_nome_advogado(nome), self._verificar_cpf_advogado(cpf),
-                          self._verificar_rg_advogado(rg), self._verificar_matricula_advogado(matricula), self._verificar_telefone_advogado(telefone),
-                          self._verificar_email_advogado(email), self._verificar_data_nascimento_advogado(dataNascimento), setor, 
-                          self._verificar_salario_advogado(salario), estadoCivil, sexo, endereco)
+        super().__init__(id=self._verificar_id_advogado(id), nome=self._verificar_nome_advogado(nome), telefone=self._verificar_telefone_advogado(telefone), cpf=self._verificar_cpf_advogado(cpf),
+                          rg=self._verificar_rg_advogado(rg), matricula=self._verificar_matricula_advogado(matricula),
+                          email=self._verificar_email_advogado(email), dataNascimento=self._verificar_data_nascimento_advogado(dataNascimento), setor=setor, 
+                          salario=self._verificar_salario_advogado(salario), estadoCivil=estadoCivil, sexo=sexo, endereço=endereço)
         self.oab = self.__verificar_oab_advogado(oab)
 
 
@@ -71,7 +71,9 @@ class Advogado(Funcionario):
     def _verificar_telefone_advogado(self, telefone):
         if not telefone.strip():
             raise TypeError("O telefone não deve estar vazio.")
-        return telefone
+        
+        self.telefone = telefone
+        return self.telefone
     
     def _verificar_email_advogado(self, email):
         if not email.strip():

@@ -4,10 +4,10 @@ from atividade_pontuada.models.enums.EstadoCivil import EstadoCivil
 from atividade_pontuada.models.enums.Sexo import Sexo
 
 class Cliente(Pessoa_Fisica):
-    def __init__(self, id:int, nome:str, telefone:str, email:str, endereco:Endereço,
+    def __init__(self, id:int, nome:str, telefone:str, email:str, endereço:Endereço,
                  sexo:Sexo, estadoCivil:EstadoCivil, dataNascimento:str, protocoloAtendimento:int) -> None:
-        super().__init__(self._verificar_id(id), self._verificar_nome(nome), self._verificar_telefone(telefone), self._verificar_email(email), 
-                         self._verificar_data_nascimento(dataNascimento), estadoCivil , sexo, endereco)
+        super().__init__(id=self._verificar_id(id), nome=self._verificar_nome(nome), telefone=self._verificar_telefone(telefone), email=self._verificar_email(email), 
+                         dataNascimento=self._verificar_data_nascimento(dataNascimento), estadoCivil=estadoCivil , sexo=sexo, endereço=endereço)
 
         self.protocoloAtemdimento = self.__verificar_protocolo_atendimento_cliente(protocoloAtendimento)
         

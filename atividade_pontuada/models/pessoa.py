@@ -1,6 +1,7 @@
+from abc import ABC, abstractmethod
 from atividade_pontuada.models.endereço import Endereço
 
-class Pessoa(): 
+class Pessoa(ABC): 
     def __init__(self, id:int, nome:str, telefone:str, email:str, endereço:Endereço) -> None:
         self.id = id
         self.nome = nome

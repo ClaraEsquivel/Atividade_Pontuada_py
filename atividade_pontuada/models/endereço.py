@@ -2,7 +2,7 @@ from atividade_pontuada.models.enums.UnidadeFederativa import UnidadeFederativa
 
 class Endereço:
     def __init__(self, logradouro:str, numero:str, complemento:str, cep:str, cidade:str, uf:UnidadeFederativa) -> None:
-        self.lagradouro = self.__verificar_logradouro_endereco(logradouro)
+        self.logradouro = self.__verificar_logradouro_endereco(logradouro)
         self.numero = self.__verificar_numero_endereco(numero)
         self.complemento = self.__verificar_complemento_endereco(complemento)
         self.cep = self.__verificar_cep_endereco(cep)

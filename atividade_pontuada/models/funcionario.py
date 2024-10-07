@@ -6,11 +6,11 @@ from atividade_pontuada.models.endereço import Endereço
 
 
 class Funcionario(Pessoa_Fisica):
-    def __init__(self, id:int, nome:str, telefone:str, email:str, endereco:Endereço,
+    def __init__(self, id:int, nome:str, telefone:str, email:str, endereço:Endereço,
                  sexo:Sexo, estadoCivil:EstadoCivil, dataNascimento:str, cpf:str, rg:str, 
                  matricula:str, setor:Setor, salario:float) -> None:
         
-        super().__init__(id, nome, telefone, email, endereco, sexo, estadoCivil, dataNascimento)
+        super().__init__(id=id, nome=nome, telefone=telefone, email=email, endereço=endereço, sexo=sexo, estadoCivil=estadoCivil, dataNascimento=dataNascimento)
         self.cpf = cpf
         self.rg = rg
         self.matricula = matricula

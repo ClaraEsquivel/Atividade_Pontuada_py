@@ -8,9 +8,9 @@ from atividade_pontuada.models.enums.UnidadeFederativa import UnidadeFederativa
 
 @pytest.fixture
 def cliente_valido():
-    cliente = Cliente(555, "Almiro", "(71)98888-6666", "almiro@gmail.com", 
-                      Endereço("Rio sena", "900", "Casa", "40600-006", "Salvador", UnidadeFederativa.BAHIA.texto), 
-                      Sexo.MASCULINO.texto, EstadoCivil.SEPARADO,"12/05/1980", 144)
+    cliente = Cliente(id=555, nome="Almiro", telefone="(71)98888-6666", email="almiro@gmail.com", 
+                      endereço=Endereço(logradouro="Rio Sena", numero="900", complemento="Casa", cep="40600-006", cidade="Salvador", uf=UnidadeFederativa.BAHIA.texto), 
+                      sexo=Sexo.MASCULINO.texto, estadoCivil=EstadoCivil.SEPARADO.texto, dataNascimento="12/05/1980", protocoloAtendimento=144)
     return cliente
 
 def test_cliente_id_valido(cliente_valido):
@@ -25,23 +25,23 @@ def test_cliente_telefone_valido(cliente_valido):
 def test_cliente_email_valido(cliente_valido):
      assert cliente_valido.email == "almiro@gmail.com"
 
-# def test_endereco_cliente_logradouro_valido(cliente_valido):
-#     assert cliente_valido.endereço.logradouro == "Rio Sena"
+def test_endereço_cliente_logradouro_valido(cliente_valido):
+    assert cliente_valido.endereço.logradouro == "Rio Sena"
 
-# def test_endereco_cliente_numero_valido(cliente_valido):
-#     assert cliente_valido.endereço.numero == "900"
+def test_endereço_cliente_numero_valido(cliente_valido):
+    assert cliente_valido.endereço.numero == "900"
 
-# def test_endereco_cliente_complemento_valido(cliente_valido):
-#     assert cliente_valido.endereço.complemento == "Casa"
+def test_endereço_cliente_complemento_valido(cliente_valido):
+    assert cliente_valido.endereço.complemento == "Casa"
 
-# def test_endereco_cliente_cep_valido(cliente_valido):
-#     assert cliente_valido.endereço.cep == "40600-006"
+def test_endereço_cliente_cep_valido(cliente_valido):
+    assert cliente_valido.endereço.cep == "40600-006"
 
-# def test_endereco_cliente_cidade_valido(cliente_valido):
-#     assert cliente_valido.endereço.cidade == "Salvador"
+def test_endereço_cliente_cidade_valido(cliente_valido):
+    assert cliente_valido.endereço.cidade == "Salvador"
 
-# def test_endereco_cliente_uf_valido(cliente_valido):
-#     assert cliente_valido.endereço.uf == UnidadeFederativa.BAHIA.texto
+def test_endereço_cliente_uf_valido(cliente_valido):
+    assert cliente_valido.endereço.uf == UnidadeFederativa.BAHIA.texto
 
 def test_cliente_protocolo_de_atendimento_valido(cliente_valido):
     assert cliente_valido.protocoloAtemdimento == 144
@@ -50,7 +50,7 @@ def test_cliente_sexo_valido(cliente_valido):
     assert cliente_valido.sexo == Sexo.MASCULINO.texto
 
 def test_cliente_estado_civil_valido(cliente_valido):
-    assert cliente_valido.estadocivil == EstadoCivil.SEPARADO
+    assert cliente_valido.estadocivil == EstadoCivil.SEPARADO.texto
     
 def test_cliente_data_de_nascimento_valido(cliente_valido):
     assert cliente_valido.dataNascimento == "12/05/1980"
