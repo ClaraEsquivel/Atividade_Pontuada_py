@@ -48,39 +48,46 @@ class Medico(Funcionario):
             raise ValueError("O id não pode ser negativo.")
         
     def _verificar_nome_vazio_invalido(self, nome):
-        if nome == "":
+        if not nome.strip():
             raise TypeError("O nome não deve estar vazio.")
         return nome
     
     def _verificar_cpf_medico(self, cpf):
-        if cpf == "":
+        if not cpf.strip():
             raise TypeError("O CPF não deve estar vazio.")
         return cpf
     
     def _verificar_rg_medico(self, rg):
-        if rg == "":
+        if not rg.strip():
             raise TypeError("O rg não deve estar vazio.")
         return rg
     
     def _verificar_matricula_medico(self, matricula):
-        if matricula == "":
+        if not matricula.strip():
             raise TypeError("A matricula não deve estar vazia.")
         return matricula
     
     def _verificar_telefone_medico(self, telefone):
-        if telefone == "":
+        if not telefone.strip():
             raise TypeError("O telefone não deve estar vazio.")
         return telefone
     
     def _verificar_email_medico(self, email):
-        if email == "":
+        if not email.strip():
             raise TypeError("O e-mail não deve estar vazio.")
         return email
     
     def _verificar_data_nascimento_medico(self, dataNascimento):
-        if dataNascimento == "":
+        if not dataNascimento.strip():
             raise TypeError("A data de nascimento não deve estar vazia.")
         return dataNascimento
+    
+    def __verificar_crm_medico(self, crm):
+        if not crm.strip():
+            raise ValueError("O CRM não deve ser vazio.")
+        if not isinstance(crm, str):
+            raise TypeError("valor inválido.")
+        return crm
     
     def _verificar_salario_tipo_invalido(self, salario):
         if not isinstance(salario, float):
@@ -90,12 +97,6 @@ class Medico(Funcionario):
         if salario <= 0:
             raise ValueError("O salário não deve ser negativo.")
 
-    def __verificar_crm_medico(self, crm):
-        if crm == "":
-            raise ValueError("O CRM não deve ser vazio.")
-        if not isinstance(crm, str):
-            raise TypeError("valor inválido.")
-        return crm
 
 
     def __str__(self) -> str:

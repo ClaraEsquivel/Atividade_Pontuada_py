@@ -6,7 +6,9 @@ from atividade_pontuada.models.enums.UnidadeFederativa import UnidadeFederativa
 
 @pytest.fixture
 def fornecedor_valido():
-    fornecedor = Fornecedor(id=333, nome="Valeria", telefone="(71)90000-1111", email="dorvaleria@gmail.com", endereço=Endereço(logradouro="Rua Salgueiro", numero="14", complemento="N/D", cep="178.147.123", cidade="São Paulo", uf=UnidadeFederativa.SAO_PAULO.texto),cnpj="123.654", inscricaoEstadual="15", produto="Café")
+    fornecedor = Fornecedor(id=333, nome="Valeria", telefone="(71)90000-1111", email="dorvaleria@gmail.com", 
+                            endereço=Endereço(logradouro="Rua Salgueiro", numero="14", complemento="N/D", cep="178.147.123", 
+                            cidade="São Paulo", uf=UnidadeFederativa.SAO_PAULO.texto),cnpj="123.654", inscricaoEstadual="15", produto="Café")
     return fornecedor
 
 def test_fornecedor_id_valido(fornecedor_valido):
@@ -74,17 +76,19 @@ def test_fornecedor_email_vazio_invalido_retorna_mensagem_erro():
                             Endereço("Rua Salgueiro", "14", "N/D", "178.147.123", "São Paulo", UnidadeFederativa.SAO_PAULO.texto))
         
 def test_fornecedor_cnpj_vazio_invalido_retorna_mensagem_erro():
-    with pytest.raises(ValueError, match="O CNPJ não deve estar vazio."):
-        Fornecedor(333, "Valeria", "(71)90000-1111", "dorvaleria@gmail.com", "", "15", "Café",
-                            Endereço("Rua Salgueiro", "14", "N/D", "178.147.123", "São Paulo", UnidadeFederativa.SAO_PAULO.texto))
+    with pytest.raises(TypeError, match="O CNPJ não deve estar vazio."):
+        Fornecedor(id=333, nome="Valeria", telefone="(71)90000-1111", email="dorvaleria@gmail.com", 
+                            endereço=Endereço(logradouro="Rua Salgueiro", numero="14", complemento="N/D", cep="178.147.123", 
+                            cidade="São Paulo", uf=UnidadeFederativa.SAO_PAULO.texto),cnpj="", inscricaoEstadual="15", produto="Café")
         
-
 def test_fornecedor_inscricao_estadual_vazio_retorna_mensagem_erro():
-    with pytest.raises(ValueError, match="A inscrição estadual não deve estar vazia."):
-        Fornecedor(333, "Valeria", "(71)90000-1111", "dorvaleria@gmail.com", "123.654", "", "Café",
-                            Endereço("Rua Salgueiro", "14", "N/D", "178.147.123", "São Paulo", UnidadeFederativa.SAO_PAULO.texto))
+    with pytest.raises(TypeError, match="A inscrição estadual não deve estar vazia."):
+        Fornecedor(id=333, nome="Valeria", telefone="(71)90000-1111", email="dorvaleria@gmail.com", 
+                            endereço=Endereço(logradouro="Rua Salgueiro", numero="14", complemento="N/D", cep="178.147.123", 
+                            cidade="São Paulo", uf=UnidadeFederativa.SAO_PAULO.texto),cnpj="123.654", inscricaoEstadual="", produto="Café")
 
 def test_fornecedor_produto_vazio_retorna_mensagem_erro():
     with pytest.raises(TypeError, match="O produto não deve estar vazio."):
-        Fornecedor(333, "Valeria", "(71)90000-1111", "dorvaleria@gmail.com", "123.654", "15", "",
-                            Endereço("Rua Salgueiro", "14", "N/D", "178.147.123", "São Paulo", UnidadeFederativa.SAO_PAULO.texto))
+        Fornecedor(id=333, nome="Valeria", telefone="(71)90000-1111", email="dorvaleria@gmail.com", 
+                            endereço=Endereço(logradouro="Rua Salgueiro", numero="14", complemento="N/D", cep="178.147.123", 
+                            cidade="São Paulo", uf=UnidadeFederativa.SAO_PAULO.texto),cnpj="123.654", inscricaoEstadual="15", produto="")

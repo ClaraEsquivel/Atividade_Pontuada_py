@@ -49,47 +49,45 @@ class Engenheiro(Funcionario):
             raise ValueError("O id não pode ser negativo.")
         
     def _verificar_nome_vazio_invalido(self, nome):
-        if nome == "":
+        if not nome.strip():
             raise TypeError("O nome não deve estar vazio.")
         return nome
     
     def _verificar_cpf_engenheiro(self, cpf):
-        if cpf == "":
+        if not cpf.strip():
             raise TypeError("O CPF não deve estar vazio.")
         return cpf
     
     def _verificar_rg_engenheiro(self, rg):
-        if rg == "":
+        if not rg.strip():
             raise TypeError("O rg não deve estar vazio.")
         return rg
     
     def _verificar_matricula_engenheiro(self, matricula):
-        if matricula == "":
+        if not matricula.strip():
             raise TypeError("A matricula não deve estar vazia.")
         return matricula
     
     def _verificar_telefone_engenheiro(self, telefone):
-        if telefone == "":
+        if not telefone.strip():
             raise TypeError("O telefone não deve estar vazio.")
         return telefone
     
     def _verificar_email_engenheiro(self, email):
-        if email == "":
+        if not email.strip():
             raise TypeError("O e-mail não deve estar vazio.")
         return email
     
     def _verificar_data_nascimento_engenheiro(self, dataNascimento):
-        if dataNascimento == "":
+        if not dataNascimento.strip():
             raise TypeError("A data de nascimento não deve estar vazia.")
         return dataNascimento
     
     def __verificar_crea_engenheiro(self, crea):
+        if not crea.strip():
+            raise ValueError("O CREA não deve ser vazio.")
         if not isinstance(crea, str):
             raise TypeError("valor inválido.")
-        
-        if crea.strip():
-            raise ValueError("O CREA não deve ser vazio.")
-        
         return crea
     
     def _verificar_salario_tipo_invalido(self, salario):

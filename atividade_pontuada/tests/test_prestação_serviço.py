@@ -56,13 +56,15 @@ def test_endereco_prestacao_servico_uf_valido(prestacao_servico_valido):
 
 def test_contrato_inicio_vazio_retorna_mensagem_excecao():
     with pytest.raises(ValueError, match="Contrato inicio está vazio."):
-        Prestacao_Servico(333, "Valeria", "(71)90000-1111", "dorvaleria@gmail.com", "", "20/04/2030", "123.654", "15",
-                            Endereço("Rua Salgueiro", "14", "N/D", "178.147.123", "São Paulo", UnidadeFederativa.SAO_PAULO.texto))
+        Prestacao_Servico(id=333, nome="Valeria", telefone="(71)90000-1111", email="dorvaleria@gmail.com", contratoInicio="", contratoFim="20/04/2030",
+                            cnpj="123.654", inscricaoEstadual="15",
+                            endereço=Endereço(logradouro="Rua Salgueiro", numero="14", complemento="N/D", cep="178.147.123", cidade="São Paulo", uf=UnidadeFederativa.SAO_PAULO.texto))
         
 def test_contrato_fim_vazio_retorna_mensagem_excecao():
     with pytest.raises(ValueError, match="Contrato fim está vazio."):
-        Prestacao_Servico(333, "Valeria", "(71)90000-1111", "dorvaleria@gmail.com", "20/04/2000", "", "123.654", "15",
-                            Endereço("Rua Salgueiro", "14", "N/D", "178.147.123", "São Paulo", UnidadeFederativa.SAO_PAULO.texto))
+        Prestacao_Servico(id=333, nome="Valeria", telefone="(71)90000-1111", email="dorvaleria@gmail.com", contratoInicio="20/04/2000", contratoFim="",
+                            cnpj="123.654", inscricaoEstadual="15",
+                            endereço=Endereço(logradouro="Rua Salgueiro", numero="14", complemento="N/D", cep="178.147.123", cidade="São Paulo", uf=UnidadeFederativa.SAO_PAULO.texto))
         
 def test_id_negativa_retorna_mensagem_erro():
     with pytest.raises(ValueError, match="O id não pode ser negativo."):
@@ -91,11 +93,13 @@ def test_email_vazio_invalido_retorna_mensagem_erro():
         
 def test_cnpj_vazio_invalido_retorna_mensagem_erro():
     with pytest.raises(TypeError, match="O CNPJ não deve estar vazio."):
-        Prestacao_Servico(333, "Valeria", "(71)90000-1111", "dorvaleria@gmail.com", "20/04/2000", "20/04/2030", "", "15",
-                            Endereço("Rua Salgueiro", "14", "N/D", "178.147.123", "São Paulo", UnidadeFederativa.SAO_PAULO.texto))
+        Prestacao_Servico(id=333, nome="Valeria", telefone="(71)90000-1111", email="dorvaleria@gmail.com", contratoInicio="20/04/2000", contratoFim="20/04/2030",
+                            cnpj="", inscricaoEstadual="15",
+                            endereço=Endereço(logradouro="Rua Salgueiro", numero="14", complemento="N/D", cep="178.147.123", cidade="São Paulo", uf=UnidadeFederativa.SAO_PAULO.texto))
         
 
 def test_fornecedor_inscricao_estadual_vazio_retorna_mensagem_erro():
     with pytest.raises(TypeError, match="A inscrição estadual não deve estar vazia."):
-        Prestacao_Servico(333, "Valeria", "(71)90000-1111", "dorvaleria@gmail.com", "20/04/2000", "20/04/2030", "123.654", "",
-                            Endereço("Rua Salgueiro", "14", "N/D", "178.147.123", "São Paulo", UnidadeFederativa.SAO_PAULO.texto))
+        Prestacao_Servico(id=333, nome="Valeria", telefone="(71)90000-1111", email="dorvaleria@gmail.com", contratoInicio="20/04/2000", contratoFim="20/04/2030",
+                            cnpj="123.654", inscricaoEstadual="",
+                            endereço=Endereço(logradouro="Rua Salgueiro", numero="14", complemento="N/D", cep="178.147.123", cidade="São Paulo", uf=UnidadeFederativa.SAO_PAULO.texto))

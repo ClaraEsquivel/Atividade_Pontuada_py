@@ -35,39 +35,39 @@ class Prestacao_Servico(Pessoa_Juridica):
             raise ValueError("O id não pode ser negativo.")
         
     def _verificar_nome_vazio_invalido(self, nome):
-        if nome == "":
+        if not nome.strip():
             raise TypeError("O nome não deve estar vazio.")
         return nome
     
     def _verificar_telefone(self, telefone):
-        if telefone == "":
+        if not telefone.strip():
             raise TypeError("O telefone não deve estar vazio.")
         return telefone
     
     def _verificar_email(self, email):
-        if email == "":
+        if not email.strip():
             raise TypeError("O e-mail não deve estar vazio.")
         return email
     
     def _verificar_cnpj(self, cnpj):
-        if cnpj == "":
+        if not cnpj.strip():
             raise TypeError("O CNPJ não deve estar vazio.")
         return cnpj
     
     def _verificar_inscricao_estadual(self, inscricao_estadual):
-        if inscricao_estadual == "":
+        if not inscricao_estadual.strip():
             raise TypeError("A inscrição estadual não deve estar vazia.")
         return inscricao_estadual
 
     def __verificar_contrato_inicio(self, contratoInicio):
-        if contratoInicio == "":
+        if not contratoInicio.strip():
             raise ValueError("Contrato inicio está vazio.")
         if not isinstance(contratoInicio, str):
             raise TypeError("Valor inválido.")
         return contratoInicio
     
     def __verificar_contrato_fim(self, contratoFim):
-        if contratoFim == "":
+        if not contratoFim.strip():
             raise ValueError("Contrato fim está vazio.")
         if not isinstance(contratoFim, str):
             raise TypeError("Valor inválido.")
