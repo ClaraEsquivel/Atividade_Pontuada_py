@@ -72,6 +72,7 @@ def test_endereço_advogado_uf_valido(advogado_valido):
 def test_advogadoa_OAB_valida(advogado_valido):
     assert advogado_valido.oab == "40711"
 
+#OAB
 def test_advogado_oab_vazio_retorna_mensagem_excecao():
     with pytest.raises(ValueError, match="O que está sendo solicitado está vazio."):
         Advogado(123, "Elton", "(75) 98888-8888", "elton@gmail.com", 
@@ -80,6 +81,7 @@ def test_advogado_oab_vazio_retorna_mensagem_excecao():
                         "15/12/1985", "089.000.000-88", "20.000.000-20", "1111",Setor.JURIDICO.texto, 
                         5000.0, "")
 
+#ID
 def test_advogado_id_negativa_retorna_mensagem_erro():
     with pytest.raises(ValueError, match="O id não pode ser negativo."):
         Advogado(-123, "Elton", "(75) 98888-8888", "elton@gmail.com", 
@@ -96,6 +98,8 @@ def test_advogado_id_tipo_invalido_retorna_mensagem_erro():
                         "15/12/1985", "089.000.000-88", "20.000.000-20", "1111",Setor.JURIDICO.texto, 
                         5000.0, "40711")
         
+
+#Nome        
 def test_advogado_nome_vazio_retorna_mensagem_erro():
     with pytest.raises(TypeError, match="O nome não deve estar vazio."):
         Advogado(123, "", "(75) 98888-8888", "elton@gmail.com", 
@@ -103,16 +107,18 @@ def test_advogado_nome_vazio_retorna_mensagem_erro():
                         UnidadeFederativa.BAHIA.texto), Sexo.MASCULINO.texto, EstadoCivil.CASADO.texto, 
                         "15/12/1985", "089.000.000-88", "20.000.000-20", "1111",Setor.JURIDICO.texto, 
                         5000.0, "40711")
-    
-def test_advogado_cpf_vazio_invalido_retorna_mensagem_erro():
+
+#CPF    
+def test_advogado_cpf_vazio_retorna_mensagem_erro():
     with pytest.raises(TypeError, match="O CPF não deve estar vazio."):
         Advogado(123, "Elton", "(75) 98888-8888", "elton@gmail.com", 
                         Endereço("Artêmia", "155", "Casa", "40700.000", "Feira de Santana", 
                         UnidadeFederativa.BAHIA.texto), Sexo.MASCULINO.texto, EstadoCivil.CASADO.texto, 
                         "15/12/1985", "", "20.000.000-20", "1111",Setor.JURIDICO.texto, 
                         5000.0, "40711")
-      
         
+
+#RG        
 def test_advogado_rg_vazio_invalido_retorna_mensagem_erro():
     with pytest.raises(TypeError, match="O rg não deve estar vazio."):
         Advogado(123, "Elton", "(75) 98888-8888", "elton@gmail.com", 
@@ -121,7 +127,7 @@ def test_advogado_rg_vazio_invalido_retorna_mensagem_erro():
                         "15/12/1985", "089.000.000-88", "", "1111",Setor.JURIDICO.texto, 
                         5000.0, "40711")
        
-        
+#Matricula      
 def test_advogado_matricula_vazio_invalido_retorna_mensagem_erro():
     with pytest.raises(TypeError, match="A matricula não deve estar vazia."):
         Advogado(123, "Elton", "(75) 98888-8888", "elton@gmail.com", 
@@ -129,7 +135,8 @@ def test_advogado_matricula_vazio_invalido_retorna_mensagem_erro():
                         UnidadeFederativa.BAHIA.texto), Sexo.MASCULINO.texto, EstadoCivil.CASADO.texto, 
                         "15/12/1985", "089.000.000-88", "20.000.000-20", "" ,Setor.JURIDICO.texto, 
                         5000.0, "40711")
-       
+
+#Telefone      
 def test_advogado_telefone_vazio_invalido_retorna_mensagem_erro():
     with pytest.raises(TypeError, match="O telefone não deve estar vazio."):
         Advogado(123, "Elton", "", "elton@gmail.com", 
@@ -137,7 +144,8 @@ def test_advogado_telefone_vazio_invalido_retorna_mensagem_erro():
                         UnidadeFederativa.BAHIA.texto), Sexo.MASCULINO.texto, EstadoCivil.CASADO.texto, 
                         "15/12/1985", "089.000.000-88", "20.000.000-20", "1111",Setor.JURIDICO.texto, 
                         5000.0, "40711")
-              
+
+#Email              
 def test_advogado_email_vazio_invalido_retorna_mensagem_erro():
     with pytest.raises(TypeError, match="O e-mail não deve estar vazio."):
         Advogado(123, "Elton", "(75) 98888-8888", "", 
@@ -145,7 +153,8 @@ def test_advogado_email_vazio_invalido_retorna_mensagem_erro():
                         UnidadeFederativa.BAHIA.texto), Sexo.MASCULINO.texto, EstadoCivil.CASADO.texto, 
                         "15/12/1985", "089.000.000-88", "20.000.000-20", "1111",Setor.JURIDICO.texto, 
                         5000.0, "40711")
-              
+
+#Data de nascimento              
 def test_advogado_data_nascimento_vazio_invalido_retorna_mensagem_erro():
     with pytest.raises(TypeError, match="A data de nascimento não deve estar vazia."):
         Advogado(123, "Elton", "(75) 98888-8888", "elton@gmail.com", 
@@ -153,7 +162,8 @@ def test_advogado_data_nascimento_vazio_invalido_retorna_mensagem_erro():
                         UnidadeFederativa.BAHIA.texto), Sexo.MASCULINO.texto, EstadoCivil.CASADO.texto, 
                         "", "089.000.000-88", "20.000.000-20", "1111",Setor.JURIDICO.texto, 
                         5000.0, "40711")
-             
+
+#Salário             
 def test_advogado_salario_tipo_invalido_retorna_mensagem_erro():
     with pytest.raises(TypeError, match="O salário deve ser um número real."):
         Advogado(123, "Elton", "(75) 98888-8888", "elton@gmail.com", 

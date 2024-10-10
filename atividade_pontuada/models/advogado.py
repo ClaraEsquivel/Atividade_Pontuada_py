@@ -15,7 +15,7 @@ class Advogado(Funcionario):
         self.oab = self.__verificar_oab_advogado(oab)
 
 
-
+#verificação de ID
     def _verificar_id_advogado(self, id):
 
         self._verificar_id_tipo_invalido(id)
@@ -24,6 +24,16 @@ class Advogado(Funcionario):
         self.id = id
         return self.id
     
+    def _verificar_id_tipo_invalido(self, id):
+        if not isinstance(id, int):
+            raise TypeError("O id deve ser um número inteiro.")
+
+    def _verificar_id_negativa(self, id):
+        if id <= 0:
+            raise ValueError("O id não pode ser negativo.")
+
+
+#Verificação de salário
     def _verificar_salario_advogado(self, salario):
 
         self._verificar_salario_tipo_invalido(salario)
@@ -32,6 +42,15 @@ class Advogado(Funcionario):
         self.salario = salario
         return self.salario
     
+    def _verificar_salario_tipo_invalido(self, salario):
+        if not isinstance(salario, float):
+            raise TypeError("O salário deve ser um número real.")
+        
+    def _verificar_salario_negativo(self, salario):
+        if salario <= 0:
+            raise ValueError("O salário não deve ser negativo.")
+
+#Verificação de nome
     def _verificar_nome_advogado(self, nome):
 
         self._verificar_nome_vazio_invalido(nome)
@@ -40,34 +59,31 @@ class Advogado(Funcionario):
         return self.nome
 
 
-    def _verificar_id_tipo_invalido(self, id):
-        if not isinstance(id, int):
-            raise TypeError("O id deve ser um número inteiro.")
-
-    def _verificar_id_negativa(self, id):
-        if id <= 0:
-            raise ValueError("O id não pode ser negativo.")
-        
     def _verificar_nome_vazio_invalido(self, nome):
         if not nome.strip():
             raise TypeError("O nome não deve estar vazio.")
         return nome
     
+#Verificação de CPF
     def _verificar_cpf_advogado(self, cpf):
         if not cpf.strip():
             raise TypeError("O CPF não deve estar vazio.")
         return cpf
     
+
+#Verificação de RG    
     def _verificar_rg_advogado(self, rg):
         if not rg.strip():
             raise TypeError("O rg não deve estar vazio.")
         return rg
-    
+
+#Verificação de matrícula    
     def _verificar_matricula_advogado(self, matricula):
         if not matricula.strip():
             raise TypeError("A matricula não deve estar vazia.")
         return matricula
-    
+
+#Verificação de telefone    
     def _verificar_telefone_advogado(self, telefone):
         if not telefone.strip():
             raise TypeError("O telefone não deve estar vazio.")
@@ -75,24 +91,19 @@ class Advogado(Funcionario):
         self.telefone = telefone
         return self.telefone
     
+#Verificação de email    
     def _verificar_email_advogado(self, email):
         if not email.strip():
             raise TypeError("O e-mail não deve estar vazio.")
         return email
-    
+
+#Verificação da data de nascimento    
     def _verificar_data_nascimento_advogado(self, dataNascimento):
         if not dataNascimento.strip():
             raise TypeError("A data de nascimento não deve estar vazia.")
         return dataNascimento
     
-    def _verificar_salario_tipo_invalido(self, salario):
-        if not isinstance(salario, float):
-            raise TypeError("O salário deve ser um número real.")
-        
-    def _verificar_salario_negativo(self, salario):
-        if salario <= 0:
-            raise ValueError("O salário não deve ser negativo.")
-    
+#Verificação da oab    
     def __verificar_oab_advogado(self, oab):
         if not oab.strip():
             raise ValueError("O que está sendo solicitado está vazio.")
